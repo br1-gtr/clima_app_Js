@@ -8,7 +8,36 @@
     <title>Weather Data App</title>
 </head>
 <body>
-    
+    <main class="container">
+        <div class="data-weather">
+            <!--left-->
+            <div class="data-weather__info">
+                <div class="icon-temp">
+                    <img id="icon" src="" alt="">
+                    <h1 class="temp">12</h1>
+                    <span>°C</span>
+                </div>
+
+                <div class="data-temp">
+                    <p>Humedad: <span class="humidity"></span>%</p>
+                    <p>Sensacion Termica: <span class="feels_like"></span>°C</p>
+                    <p>Viento a <span class="wind"></span> km/h</p>
+                </div>
+            </div>
+            <!--rigth-->
+            <div class="data-weather__zone">
+                <h2>Zona, Ciudad(...)</h2>
+                <h3>Provincia(...)</h3>
+                <p>dia, hora(...)</p>
+                <p>Parcialmente Nublado(...)</p>
+            </div>
+        </div>
+        <!--forecast-->
+        <div class="forecast">
+
+        </div>
+
+    </main>
     
 <script src="./js/main.js"></script>
 </body>

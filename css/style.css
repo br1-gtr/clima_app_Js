@@ -9,14 +9,16 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: aqua;
+  background: #e0e0e0;
+  font-family: "Montserrat", sans-serif;
 }
 
 .container {
-  height: 500px;
-  width: 700px;
-  border: 2px solid black;
-  border-radius: 15px;
+  height: 400px;
+  width: 450px;
+  border-radius: 50px;
+  background: #e0e0e0;
+  box-shadow: -20px -20px 60px #bebebe, 20px 20px 60px #ffffff;
 }
 .container .data-weather {
   display: flex;
@@ -36,5 +38,15 @@ body {
   align-items: center;
 }
 .container .data-weather .data-weather__info .icon-temp img {
-  height: 100px;
+  height: 10 0px;
+}
+.container .forecast {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.container .forecast__item {
+  border: 1px solid black;
+  background-color: aqua;
 }/*# sourceMappingURL=style.css.map */

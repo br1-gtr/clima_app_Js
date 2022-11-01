@@ -1,40 +1,61 @@
 console.log('hola api clima');
 
 const API_KEY = '9410e03fabc8ba2fdb99b01fab50359e';
-
+const API_KEY_FORECAST = 'a22a2934b1845ed23070c3071ed514de'
 const getGeoLoc = () => { //obtiene geolocalizacion de dispositivo
    navigator.geolocation.getCurrentPosition(getDataApi);
-   //navigator.geolocation.getCurrentPosition(getForecastInfo);
+   navigator.geolocation.getCurrentPosition(getForecastInfo);
 }
 
 const getDataApi = pos => {
     console.log(pos);
     const { latitude , longitude } = pos.coords; //asigna lat y long
+    console.log(latitude);
+    console.log(longitude);
     fetch( `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric&lang=sp` )
     .then( res => res.json() )
     .then( data => renderData(data) )
     .catch( err => console.log('Consulta API Fallida!',err) );
 }
-/*
+
 const getForecastInfo = pos =>{
     const { latitude , longitude } = pos.coords; //asigna lat y long
-    fetch( `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${latitude}&lon=${longitude}&cnt=4&appid=${API_KEY}`)
+    console.log(latitude);
+    console.log(longitude);
+    fetch( `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric&lang=sp`)
     .then( res => res.json() )
-    .then( data => console.log(data) )
-    .catch( err => console.log('Consulta API Fallida!',err) );
-}*/
+    .then( data => renderForecastData(data) )
+    .catch( err => console.log('Consulta API(FORECAST) Fallida!',err) );
+}
 
 const renderData = dataApi => {
     console.log(dataApi);
-    setIcon(dataApi);
+    setIcon(dataApi.weather[0].icon);
     setInfoWeather(dataApi);
 }
 
-const setIcon = dataApi => { //establece icono segun id
+const setIcon = dataIcon => { //establece icono segun id
     const iconCard = document.querySelector('#icon');
-    const idIcon = dataApi.weather[0].icon
-    iconCard.setAttribute('src', `http://openweathermap.org/img/wn/${idIcon}.png`);
+    //const idIcon = dataApi
+    iconCard.setAttribute('src', `http://openweathermap.org/img/wn/${dataIcon}.png`);
 }
+
+const renderForecastData = dataForecast => {
+    const containerForecast = document.querySelector('.forecast');
+        setIconForecast(containerForecast, dataForecast);
+    //list[0].weather.0.icon
+}
+
+const setIconForecast = (containerFrc, dataApi) => {
+    console.log(dataApi)
+    for(let i = 0; i < 4; i++){
+        containerFrc.innerHTML += `
+            <div class="forecast__item"><img src=${`http://openweathermap.org/img/wn/${dataApi.list[i].weather[0].icon}.png`} alt="fcs${i}"><span>${dataApi.list[i].dt_txt}</sapn></div>
+            `;
+    }
+    
+}
+
 const setInfoWeather = dataApi => {
     const temp = document.querySelector('.temp');
     temp.textContent = Math.round(dataApi.main.temp);
@@ -59,7 +80,7 @@ const getDateInfo = () => {
     let dateInfo = '';
     const date = new Date()
     const month = date.toString().substring(4,7);
-    dateInfo = `${month}, ${date.getFullYear()} - ${date.getHours()}:${date.getMinutes()} hs`;
+    dateInfo = `${month}, ${date.getFullYear()} - ${date.getHours()} hs`;
     return dateInfo;
 }
 

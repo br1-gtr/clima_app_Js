@@ -8,46 +8,77 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #e0e0e0;
+    background: #eeececda;
     font-family: 'Montserrat', sans-serif;
 }
 
 .container{
-    height: 400px;
+    height: auto;
     width: 450px;
-    border-radius: 50px;
-    background: #e0e0e0;
+    border-radius: 15px;
+    background: #97969666;
     box-shadow:  -20px -20px 60px #bebebe,
              20px 20px 60px #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
     .data-weather{
+        width: 100%;
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
-        .data-weather__info{
+        &__info{
+            width: 50%;
             border: 1px solid black;
+            border-radius: 10px;
             padding: 5px;
-            margin: 5px;
+            //margin: 5px;
+            div{
+                width: 100%;
+            }
             .icon-temp{
                 display: flex;
                 flex-direction: row;
                 justify-content: center;
                 align-items: center;
                 img{
-                    height: 10 0px;
+                    height: 100px;
                 }
             }
         }
-        
+        &__zone{
+            width: 50%;
+            padding-left: 10px;
+        }
     }
+    .icon-loc{
+        width: 15px;
+    }    
     .forecast{
+        width: 100%;
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
+        //margin: 5px;
         &__item{
+            width: 100px;
+            padding: 2px;
+            margin-top: 5px;
             border: 1px solid black;
-            background-color: aqua;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.574);
+            color: #e7e7e7;
+        }
+        &__description{
+            font-size: 9px;
         }
     }
 }

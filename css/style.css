@@ -9,44 +9,74 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #e0e0e0;
+  background: rgba(238, 236, 236, 0.8549019608);
   font-family: "Montserrat", sans-serif;
 }
 
 .container {
-  height: 400px;
+  height: auto;
   width: 450px;
-  border-radius: 50px;
-  background: #e0e0e0;
+  border-radius: 15px;
+  background: rgba(151, 150, 150, 0.4);
   box-shadow: -20px -20px 60px #bebebe, 20px 20px 60px #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
 }
 .container .data-weather {
+  width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
-.container .data-weather .data-weather__info {
+.container .data-weather__info {
+  width: 50%;
   border: 1px solid black;
+  border-radius: 10px;
   padding: 5px;
-  margin: 5px;
 }
-.container .data-weather .data-weather__info .icon-temp {
+.container .data-weather__info div {
+  width: 100%;
+}
+.container .data-weather__info .icon-temp {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
-.container .data-weather .data-weather__info .icon-temp img {
-  height: 10 0px;
+.container .data-weather__info .icon-temp img {
+  height: 100px;
+}
+.container .data-weather__zone {
+  width: 50%;
+  padding-left: 10px;
+}
+.container .icon-loc {
+  width: 15px;
 }
 .container .forecast {
+  width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 .container .forecast__item {
+  width: 100px;
+  padding: 2px;
+  margin-top: 5px;
   border: 1px solid black;
-  background-color: aqua;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.574);
+  color: #e7e7e7;
+}
+.container .forecast__description {
+  font-size: 9px;
 }/*# sourceMappingURL=style.css.map */

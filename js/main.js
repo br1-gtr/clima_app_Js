@@ -22,7 +22,7 @@ const getForecastInfo = pos =>{
     const { latitude , longitude } = pos.coords; //asigna lat y long
     console.log(latitude);
     console.log(longitude);
-    fetch( `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric&lang=sp`)
+    fetch( `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric&lang=sp&cnt=5`)
     .then( res => res.json() )
     .then( data => renderForecastData(data) )
     .catch( err => console.log('Consulta API(FORECAST) Fallida!',err) );
@@ -50,7 +50,11 @@ const setIconForecast = (containerFrc, dataApi) => {
     console.log(dataApi)
     for(let i = 0; i < 4; i++){
         containerFrc.innerHTML += `
-            <div class="forecast__item"><img src=${`http://openweathermap.org/img/wn/${dataApi.list[i].weather[0].icon}.png`} alt="fcs${i}"><span>${dataApi.list[i].dt_txt}</sapn></div>
+            <div class="forecast__item">
+                <p class="forecast__description">${dataApi.list[i].weather[0].description.toUpperCase()}</p>
+                <img class="forecast__img" src=${`http://openweathermap.org/img/wn/${dataApi.list[i].weather[0].icon}.png`} alt="fcs${i}">
+                <span class="forecast__time">${dataApi.list[i].dt_txt.substring(11,13)} hs</sapn>
+            </div>
             `;
     }
     
